@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angelica Lewis • Illustrator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4B5BA6;
+            --white: #FFFFFF;
+            --black: #000000;
+            --header-height: 6.5rem;
+            --section-padding: 2rem;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        section {
+            height: 100vh;
+            scroll-snap-align: start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2 {
+            position: sticky;
+            top: 0;
+            text-align: center;
+            padding: var(--section-padding) 0;
+            margin: 0;
+            z-index: 10;
+            font-size: 2.5rem;
+            font-family: "Gill Sans Display", "Gill Sans", sans-serif;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        a {
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        .section-content {
+            height: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: var(--section-padding);
+        }
+        /* Home Section */
+        .home {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--section-padding);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 2rem;
+            width: 105vw;
+            max-width: 105vw;
+        }
+
+        nav {
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .about h2 {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .about-text {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 0 var(--section-padding);
+            position: relative;
+            top: 0;
+            z-index: 1;
+            padding-top: 2rem;
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            text-align: justify;
+            font-weight: 300; /* Lighter weight for better readability */
+        }
+
+
+        .baking-img {
+            position: absolute;
+            width: 600px;
+            left: 0;
+            top: 0;
+        }
+
+        .grad-img {
+            position: absolute;
+            width: 400px;
+            left: 300px;
+            bottom: 0px;
+        }
+
+        .profile-img {
+            position: absolute;
+            width: 400px;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Illustrations Section */
+        #illustrations {
+            height: 150vh;
+        }
+
+        .gallery {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: var(--section-padding);
+        }
+
+        .illustration-item {
+            position: absolute;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .illustration-item.dragging {
+            cursor: grabbing;
+            z-index: 1000;
+        }
+
+        .illustration-item img {
+            pointer-events: none;
+            width: 100%;
+            height: auto;
+        }
+
+
+        /* Contact Section */
+        .contact {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        #contact .section-content {
+            height: auto;
+            display: block;
+        }
+
+        #contact h2 {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 2rem;
+            gap: 2rem;
+        }
+
+        .contact-links a {
+            color: var(--white);
+            font-family: monospace;
+            font-size: 1.2rem;
+            word-break: break-all; /* Allows email to wrap nicely */
+            max-width: 90%; /* Prevents text from touching edges */
+            text-align: center;
+        }
+
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            :root {
+                --section-padding: 1.5rem;
+            }
+
+            .about-text {
+                margin-top: 20vh;
+            }
+            
+            .baking-img {
+                width: 300px;
+                left: -50px;
+            }
+            
+            .grad-img {
+                width: 300px;
+                left: 30px;
+            }
+            
+            .profile-img {
+                width: 200px;
+                right: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            nav a {
+                font-size: 1.5rem;
+            }
+
+            .about-text {
+                text-align: center;
+                padding: 0 1rem;
+            }
+            
+            .baking-img,
+            .grad-img,
+            .profile-img {
+                display: none;
+            }
+
+            .illustration-item {
+                position: relative !important;
+                transform: none !important;
+                display: block;
+                margin-bottom: 1rem;
+                cursor: default;
+            }
+
+            .gallery {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-links a {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-height: 600px) {
+
+            h2 {
+                font-size: 2rem;
+                padding: 1rem 0;
+            }
+        }
+
+        .illustration-item {
+            position: absolute;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .illustration-item img {
+            pointer-events: none;
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <section class="home">
+        <div class="logo">
+            <img src="images/names.png" alt="angelica" class="handwritten-name">
+        </div>
+        <nav>
+            <a href="#about">ABOUT</a>
+            <a href="#illustrations">ILLUSTRATIONS</a>
+            <a href="#contact">CONTACT</a>
+        </nav>
+    </section>
+
+    <section id="about" class="about">
+        <h2>ABOUT</h2>
+        <img src="images/buns.png" alt="Cinnamon bun" class="baking-img">
+        <img src="images/grad.png" alt="Graduation details" class="grad-img">
+        <img src="images/me.png" alt="Angelica on stairs" class="profile-img">
+        <div class="about-text">
+            <p>Hey! I'm Angelica, a 25-year-old illustrator living in London. I'm working as an educator and the sustainability lead at a Forest School.</p>
+            <p>I enjoy drawing things that I love and writing engaging stories for children. I've finished one book called 'Olive' and am currently working on a few other projects. I hope you enjoy my art!</p>
+        </div>
+    </section>
+
+    <section id="illustrations">
+        <h2 style="color: var(--primary-blue);">ILLUSTRATIONS</h2>
+        <div class="gallery">
+            <div class="illustration-item" style="right: 130px; top: 0px; width: 100px;">
+                <img src="images/acorn.png" alt="Acorn illustration">
+            </div>
+            <div class="illustration-item" style="left: 130px; top: 0px; width: 300px;">
+                <img src="images/aster.png" alt="Aster flower illustration">
+            </div>
+            <div class="illustration-item" style="left: 40%; top: 200px; width: 400px;">
+                <img src="images/emma.png" alt="Emma illustration">
+            </div>
+            <div class="illustration-item" style="left: 430px; bottom: 375px; width: 215px;">
+                <img src="images/peach.png" alt="Peach illustration">
+            </div>
+            <div class="illustration-item" style="right: 30px; bottom: 150px; width: 400px;">
+                <img src="images/puddle.png" alt="Puddle illustration">
+            </div>
+            <div class="illustration-item" style="left: 30px; bottom: 425px; width: 250px;">
+                <img src="images/pumpkin.png" alt="Pumpkin illustration">
+            </div>
+            <div class="illustration-item" style="left: 550px; top: 50px; width: 350px;">
+                <img src="images/bee.png" alt="Bee illustration">
+            </div>
+            <div class="illustration-item" style="left: 260px; top: 300px; width: 350px;">
+                <img src="images/also_bee.png" alt="Bee illustration">
+            </div>
+            <div class="illustration-item" style="right: 80px; top: 350px; width: 300px;">
+                <img src="images/xmas_tiger.png" alt="Cat xmas illustration">
+            </div>
+            <div class="illustration-item" style="left: 350px; bottom: 175px; width: 550px;">
+                <img src="images/iceberg.png" alt="Iceberg illustration">
+            </div>
+            <div class="illustration-item" style="left: 30px; bottom: 150px; width: 300px;">
+                <img src="images/goose.png" alt="Goose illustration">
+            </div>
+        </div>
+    </section>
+        
+
+    <section id="contact" class="contact">
+        <div class="contact-links">
+            <h2>CONTACT</h2>
+            <a href="https://instagram.com/angelicalewis.illustrates" target="_blank">
+                INSTAGRAM:<br>angelicalewis.illustrates
+            </a>
+            <a href="mailto:angelicalewisillustrates@gmail.com">
+                EMAIL:<br>angelicalewisillustrates@gmail.com
+            </a>
+        </div>
+        </div>
+        <script>
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', e => {
+                    e.preventDefault();
+                    document.querySelector(e.target.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+            
+            if (window.innerWidth > 768) {
+                const gallery = document.querySelector('.gallery');
+                let activeItem = null;
+                let offsetX, offsetY;
+
+                gallery.addEventListener('mousedown', e => {
+                    const item = e.target.closest('.illustration-item');
+                    if (item) {
+                        activeItem = item;
+                        // Calculate offset from the mouse position to the item's current position
+                        offsetX = e.clientX - item.offsetLeft;
+                        offsetY = e.clientY - item.offsetTop;
+                        item.classList.add('dragging');
+                    }
+                });
+
+                gallery.addEventListener('mousemove', e => {
+                    if (activeItem) {
+                        e.preventDefault();
+                        // Set new position by subtracting the initial offset
+                        activeItem.style.left = `${e.clientX - offsetX}px`;
+                        activeItem.style.top = `${e.clientY - offsetY}px`;
+                    }
+                });
+
+                const endDrag = () => {
+                    if (activeItem) {
+                        activeItem.classList.remove('dragging');
+                        activeItem = null;
+                    }
+                };
+
+                gallery.addEventListener('mouseup', endDrag);
+                gallery.addEventListener('mouseleave', endDrag);
+            }
+        </script>            
+    </section>
+</body>
+</html>
